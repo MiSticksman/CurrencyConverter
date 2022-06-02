@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block head %}
+    <meta charset="UTF-8">
+    <title>Currency converter</title>
+    <link rel="stylesheet" href="/static/css/converter.css">
+
+{% endblock %}
+{% block content %}
+    <h2 class="about_text">You can convert online here.</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-container">
+            <div class="names-container">
+                <select name="input_name">
+                    {% for index in range(data.size)%}
+                        {% if name_in and name_in == data.char_codes[index].get_text() %}
+                            <option selected="selected" value={{data.char_codes[index].get_text()}}>{{data.names[index].get_text()}} ({{data.char_codes[index].get_text()}})</option>
+                        {% else %}
+                            <option value={{data.char_codes[index].get_text()}}>{{data.names[index].get_text()}} ({{data.char_codes[index].get_text()}})</option>
+                        {% endif %}
+                    {%endfor%}
+                </select>
+
+            <div class="put">
+            <label for="value_input">Input: </label>
+            <input id="value_input" type="text" name="value_input" value={{data.input_res}}></div>
+        </div>
+            <div class="button"><input type="submit" value="convert"></div>
+
+            <div class="names-container">
+                <select name="output_name">
+                    {% for index in range(data.size)%}
+                        {% if name_out and name_out == data.char_codes[index].get_text() %}
+                            <option selected="selected" value={{data.char_codes[index].get_text()}}>{{data.names[index].get_text()}} ({{data.char_codes[index].get_text()}})</option>
+                        {% else %}
+                            <option value={{data.char_codes[index].get_text()}}>{{data.names[index].get_text()}} ({{data.char_codes[index].get_text()}})</option>
+                        {% endif %}
+                    {%endfor%}
+                </select>
+
+            <div class="put">
+                <label for="output_value">Output: </label>
+
+                {% if data.output_res > 0 %}
+                <input id="output_value" type="text" name="out_value_field" value = {{data.output_res}}>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

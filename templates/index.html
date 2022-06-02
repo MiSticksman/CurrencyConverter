@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block head %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+
+{% endblock %}
+{% block content %}
+  <h1>Current currency quotes for the Central Bank of the Russian Federation in rubles</h1>
+  <div class="text">
+        <ul>
+            {% for index in range(data.size)%}
+         <li>{{data.names[index].get_text()}} ({{data.char_codes[index].get_text()}}): {{data.in_rubles[index]}}</li>
+            {%endfor%}
+       </ul>
+  </div>
+{% endblock %}

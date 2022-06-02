@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+.form-container {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.names-container {
+    font-size: 17px;
+    background-color: mediumpurple;
+    height: 100px;
+    width: 40%;
+    margin: .9rem;
+}
+
+.button {
+    background-color: #008CBA;
+    padding: 15px 15px;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

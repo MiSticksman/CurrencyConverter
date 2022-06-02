@@ -1,0 +1,47 @@
+<!--<!DOCTYPE html>-->
+<!--{% extends "base.html" %}-->
+<!--{% block head %}-->
+<!--{% endblock %}-->
+<!--{% block content %}-->
+  <meta charset="windows-1251">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Converter</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script>
+  $(document).ready(function () {
+      $.ajax({
+          type: "GET",
+          url: "/static/encoding.xml",
+          dataType: "xml",
+          success: function_Parsxml
+      });
+  });
+  function function_Parsxml(xml) {
+      $('#load').fadeOut();
+      $(xml).find("Valute").each(function () {
+          $(".main").append('<div class="song"><div class="title">' + $(this).find("Name").text() + '</div> <div class="Artist">' + $(this).find("Value").text() + '</div></div>');
+          $(".song").fadeIn(1000);
+      });
+  }
+  </script>
+  <style>
+  .main{
+  width:100%;
+  margin:0 auto;
+  }
+  .song{
+  width:208px;
+  float:left;
+  margin:10px;
+  border:1px #dedede solid;
+  padding:5px;
+  display:none;
+  }
+  .title{
+  margin-bottom:6px;}
+  .Artist{font-size:12px; color:#999; margin-top:4px;}
+  </style>
+  <div class="main">
+      <div align="center" class="loader"><img src="/static/img/loader.gif" id="load" align="absmiddle"/></div>
+  </div>
+<!--  {% endblock %}-->
